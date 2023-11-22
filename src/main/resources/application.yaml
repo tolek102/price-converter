@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: price-converter
+server:
+  port: 8081
+
+pl.pbf:
+  nbp:
+    url: http://api.nbp.pl
