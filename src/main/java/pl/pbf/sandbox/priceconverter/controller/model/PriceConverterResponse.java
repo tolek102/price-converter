@@ -9,5 +9,6 @@ import lombok.Data;
 @Builder
 public class PriceConverterResponse {
 
-    private BigDecimal convertedPrice;
+    private BigDecimal calculatedPrice;
+    private String formattedPrice;
 }
