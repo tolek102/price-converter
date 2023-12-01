@@ -27,16 +27,15 @@ public class PriceConverterService {
 
         return PriceConverterResponse.builder().calculatedPrice(convertedPrice)
                 .formattedPrice(formatPrice(convertedPrice)).build();
-
     }
+
 
     private BigDecimal convertPrice(final BigDecimal price, final NbpResponse averageExchangeRate) {
         return price
                 .multiply(averageExchangeRate.getRates().get(0).getMid())
                 .round(new MathContext(4))
         // inteliJ somehow don't see class java.math.RoundingMode (java coretto 21.0.1)
-        //                .setScale(2, RoundingMode.HALF_EVEN);
-                .setScale(2);
+                .setScale(2 /*, RoundingMode.HALF_EVEN*/);
     }
 
     private String formatPrice(final BigDecimal convertedPrice) {

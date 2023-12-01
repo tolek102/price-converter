@@ -10,7 +10,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: *
+        include: '*'
   endpoint:
     health:
 #      dev only
@@ -18,7 +18,7 @@ management:
   tracing:
     sampling:
 #      dev only, default = 0.1
-      probability:
+      probability: 1.0
 
 
 pl.pbf:
