@@ -1,3 +1,3 @@
 pl.pbf:
   nbp:
-    url: http://api.nbp.pl
+    url: http://localhost:${wiremock.server.port}
