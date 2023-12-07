@@ -20,7 +20,7 @@ public class NbpClient {
     private static final String AVERAGE_EXCHANGE_RATE_BY_CURRENCY_ENDPOINT = "/api/exchangerates/rates/A/{currency}";
     private final ClientsConfiguration clientsConfiguration;
 
-    public NbpResponse getAverageExchangeRate(final String currency) {
+    public NbpResponse getNbpCurrencyInfo(final String currency) {
         final var restClient = RestClient.create();
         final var baseUrl = clientsConfiguration.getNbp().getUrl();
 

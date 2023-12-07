@@ -1,5 +1,7 @@
 package pl.pbf.sandbox.priceconverter.exception;
 
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,4 +19,5 @@ public class CustomErrorResponse {
     private String url;
     private HttpStatus httpStatus;
     private Integer statusCode;
+    private LocalDateTime timestamp;
 }
