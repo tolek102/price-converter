@@ -2,7 +2,6 @@ package pl.pbf.sandbox.priceconverter.client.nbp;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClient.ResponseSpec.ErrorHandler;
@@ -22,10 +21,10 @@ public class NbpClient {
     private final ClientsConfiguration clientsConfiguration;
 
     public NbpResponse getAverageExchangeRate(final String currency) {
-        RestClient restClient = RestClient.create();
-        final String baseUrl = clientsConfiguration.getNbp().getUrl();
+        final var restClient = RestClient.create();
+        final var baseUrl = clientsConfiguration.getNbp().getUrl();
 
-        final ResponseEntity<NbpResponse> nbpResponse = restClient.get()
+        final var nbpResponse = restClient.get()
                 .uri(baseUrl + AVERAGE_EXCHANGE_RATE_BY_CURRENCY_ENDPOINT, currency)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()

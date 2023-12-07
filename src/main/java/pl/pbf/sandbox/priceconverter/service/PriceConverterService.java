@@ -21,10 +21,10 @@ public class PriceConverterService {
     private final NbpClient nbpClient;
 
     public PriceConverterResponse convertPriceToPln(final String currency, final BigDecimal price) {
-        final NbpResponse averageExchangeRate = nbpClient.getAverageExchangeRate(currency);
+        final var averageExchangeRate = nbpClient.getAverageExchangeRate(currency);
         log.info("NBP response: {}", averageExchangeRate);
 
-        final BigDecimal convertedPrice = convertPrice(price, averageExchangeRate);
+        final var convertedPrice = convertPrice(price, averageExchangeRate);
 
         return PriceConverterResponse.builder().calculatedPrice(convertedPrice)
                 .formattedPrice(formatPrice(convertedPrice)).build();

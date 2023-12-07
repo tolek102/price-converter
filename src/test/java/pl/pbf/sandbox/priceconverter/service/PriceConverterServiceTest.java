@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import pl.pbf.sandbox.priceconverter.client.nbp.NbpClient;
 import pl.pbf.sandbox.priceconverter.client.nbp.model.NbpResponse;
 import pl.pbf.sandbox.priceconverter.client.nbp.model.RatesItem;
-import pl.pbf.sandbox.priceconverter.controller.model.PriceConverterResponse;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -34,7 +33,7 @@ public class PriceConverterServiceTest {
     @MethodSource("priceAndExpectedCalculatedPriceAndFormattedPrice")
     void should_correctly_calculate_pln_price(final BigDecimal price, final String calculatedPrice, final String formattedPrice) {
         // given
-        final NbpResponse nbpResponse = NbpResponse.builder()
+        final var nbpResponse = NbpResponse.builder()
                 .rates(List.of(RatesItem.builder()
                         .mid(bd(3.98))
                         .build()))
@@ -42,10 +41,10 @@ public class PriceConverterServiceTest {
         when(nbpClient.getAverageExchangeRate(anyString())).thenReturn(nbpResponse);
 
         // when
-        final PriceConverterResponse response = priceConverterService.convertPriceToPln("USD", price);
+        final var response = priceConverterService.convertPriceToPln("USD", price);
 
         // then
-        final SoftAssertions softAssert = new SoftAssertions();
+        final var softAssert = new SoftAssertions();
         softAssert.assertThat(response.getCalculatedPrice().toString()).isEqualTo(calculatedPrice);
         softAssert.assertThat(response.getFormattedPrice()).isEqualTo(formattedPrice);
         softAssert.assertAll();

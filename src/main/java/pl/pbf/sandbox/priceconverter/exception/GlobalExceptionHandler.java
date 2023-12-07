@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(PriceConverterException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public CustomErrorResponse handleNoRecordFoundException(PriceConverterException ex) {
+    public CustomErrorResponse handleNoRecordFoundException(final PriceConverterException ex) {
 
         return CustomErrorResponse.builder()
                 .httpStatus(ex.getHttpStatus())
